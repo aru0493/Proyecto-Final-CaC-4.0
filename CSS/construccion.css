@@ -1,0 +1,30 @@
+@import url(./reset.css);
+
+main .construccion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100%;
+  width: auto;
+}
+
+main .construccion .imagen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   max-height: 350px;
+    width: auto;
+  }
+
+main .construccion .texto {
+  font-size: 2rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+main .construccion .texto p {
+  margin: 0 0.25em;
+}

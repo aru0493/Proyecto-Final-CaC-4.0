@@ -1,0 +1,344 @@
+@import url(./reset.css);
+
+main .hvrImg:hover {
+  transform: scale(1.05);
+  background-color: var(--color-terciario);
+}
+
+main .hvr:hover {
+  transform: scale(1.5);
+  filter: drop-shadow(1px 1px 5px var(--color-primario));
+}
+
+main .ofertas {
+  height: 15vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+main .ofertas .banner {
+  width: 100%;
+  height: 100%;
+  background-image: url(../imagenes/cabecera_blackfriday-juegosdemesa.jpg);
+  background-position: center;
+  background-size: cover;
+  transition: transform 0.5s ease-in-out;
+}
+
+main .carrusel {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+main .carrusel .mostrador {
+  flex: 0 0 auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.5s ease;
+}
+
+main .carrusel .mostrador .elemento {
+  height: 30vh;
+  display: block;
+  border-radius: 1vh;
+  margin: 2.5vh 2.5vw;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: all 1s ease-in-out;
+  overflow: hidden;
+}
+
+#imagen1{
+  background-image: url(../imagenes/Juegos/codigo_secreto.png);
+}
+
+#imagen2{
+  background-image: url(../imagenes/juegos/pandemic.png);
+  
+}
+
+#imagen3{
+  background-image: url(../imagenes/juegos/santorini.png);
+}
+
+#imagen4{
+  background-image: url(../imagenes/juegos/through_the_ages.png);
+}
+
+#imagen5{
+  background-image: url(../imagenes/juegos/terraforming_mars.png);
+}
+
+main .carrusel .mostrador .elemento .info {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-end;
+  justify-content: space-evenly;
+  gap: 0.5em;
+  width: 100%;
+  height: 150%;
+  padding: 1vh;
+  color: var(--color-primario);
+  background: linear-gradient(
+    to top,
+    var(--color-secundario) 27.5%,
+    transparent 50%
+  );
+  transition: all 1s ease-in-out;
+}
+
+main .carrusel .mostrador .elemento .info .titulo {
+  text-align: center;
+  font-size: 1.5em;
+  width: 100%;
+}
+
+main .carrusel .mostrador .elemento .info .precio {
+  text-align: center;
+  font-size: 1.25em;
+  align-content: center;
+}
+
+main .carrusel .mostrador .elemento .info .boton {
+  width: 4em;
+  padding: 0.5vh;
+  border-radius: 1vh;
+  background-color: var(--color-primario);
+  color: var(--color-secundario);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+main .carrusel .mostrador .elemento .info .boton:hover {
+  scale: 1.1;
+  background-color: var(--color-selector);
+  color: var(--color-primario);
+}
+
+main .carrusel .mostrador .elemento.activo {
+  transform: scale(1.05);
+  background-color: var(--color-terciario);
+  box-shadow: 2.5px 2.5px 10px var(--color-primario);
+}
+
+main .carrusel .mostrador .elemento.activo .info {
+  height: 100%;
+  background: linear-gradient(
+    to top,
+    var(--color-secundario) 27.5%,
+    transparent 50%
+  );
+}
+
+main .carrusel .selector {
+  display: flex;
+  width: 100%;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+main .carrusel .selector .anterior {
+  margin: 0.5vh 0;
+  width: 2vh;
+  height: 2vh;
+  fill: var(--color-primario);
+  transition: transform 0.25s ease-in-out;
+}
+
+main .carrusel .selector .anterior .on, main .carrusel .selector .anterior:hover .off{
+  display: none;
+}
+
+main .carrusel .selector .anterior .off, main .carrusel .selector .anterior:hover .on {
+  display: block;
+}
+
+main .carrusel .selector .puntos {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  width: calc(5 * 2.5vh);
+}
+
+main .carrusel .selector .puntos .punto {
+  margin: 1vh 0.75vh;
+  width: 1vh;
+  height: 1vh;
+  fill: var(--color-terciario);
+  transition: transform 0.25s ease-in-out;
+}
+
+main .carrusel .selector .puntos .punto .off {
+  fill: var(--color-primario);
+}
+
+main .carrusel .selector .puntos .punto .on, main .carrusel .selector .puntos .punto:hover .off, main .carrusel .selector .puntos .punto.activo .off {
+  display: none;
+}
+
+main .carrusel .selector .puntos .punto .off, main .carrusel .selector .puntos .punto:hover .on {
+  display: block;
+}
+
+main .carrusel .selector .puntos .punto.activo .on {
+  display: block;
+  fill: var(--color-selector);
+}
+
+main .carrusel .selector .siguiente {
+  margin: 0.5vh 0;
+  width: 2vh;
+  height: 2vh;
+  fill: var(--color-primario);
+  transition: transform 0.25s ease-in-out;
+}
+
+main .carrusel .selector .siguiente .on, main .carrusel .selector .siguiente:hover .off {
+  display: none;
+}
+
+main .carrusel .selector .siguiente:hover .on {
+  display: block;
+}
+
+main .categorias {
+  height: auto;
+  grid-area: categorias;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+main .categorias .banner {
+  width: 45%;
+  height: 20vh;
+  margin: 2.5%;
+  background-position: center;
+  background-size: cover;
+  border-radius: 1vh;
+  overflow: hidden;
+  background-color: var(--color-secundario);
+  transition: all 0.5s ease-in-out;
+}
+
+main .categorias .banner .titulo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 2em;
+  color: var(--color-terciario);
+  text-shadow: 1px 1px 1.5px var(--color-primario);
+  text-align: center;
+  transition: all 0.25s ease-in-out;
+  background: transparent;
+}
+
+main .categorias .banner:hover .titulo{
+  color: var(--color-selector);
+  text-shadow: 1px 1px 1.5px var(--color-header);
+  backdrop-filter: blur(1.5px);
+}
+
+/*  Resolucion menor a 600px (celulares) */
+@media only screen and (max-width: 600px) {
+  main .ofertas {
+    height: 15vh;
+    display: none;
+  }
+
+  main .carrusel .mostrador {
+    width: calc(100% * 5);
+  }
+
+  main .carrusel .mostrador .elemento {
+    width: 100%;
+    margin: 5vh 5vw;
+  }
+
+  main .carrusel .mostrador .elemento .info .boton {
+    background-color: var(--color-selector);
+    color: var(--color-primario)}
+
+  main .carrusel .selector .puntos {
+    width: calc(5 * 3vh);
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  main .carrusel .selector .anterior,
+  main .carrusel .selector .punto,
+  main .carrusel .selector .siguiente {
+    scale: 2;
+    margin: 1vh;
+  }
+
+  main .categorias .banner {
+    width: 95%;
+    height: 20vh;
+    margin: 2.5%;
+  }
+
+  main .categorias .banner .titulo {
+    height: 100%;
+    color: var(--color-header);
+    backdrop-filter: blur(1.5px);
+  }
+}
+
+/*  Resolucion mayor a 600px y menor a 1200px (tablets y laptops de baja resolucion) */
+@media only screen and (min-width: 600px) and (max-width: 1200px) {
+  main .carrusel .mostrador {
+    width: calc(33.33% * 5);
+  }
+
+  main .carrusel .mostrador .elemento {
+    width: calc(100% / 3);
+  }
+
+  main .carrusel .mostrador .elemento .info .boton {
+    background-color: var(--color-selector);
+    color: var(--color-primario)}
+
+    main .categorias .banner .titulo {
+      height: 100%;
+      color: var(--color-header);
+      backdrop-filter: blur(1.5px);
+    }
+}
+
+/*  Resolucion mayor a 1200px (PC de escritorio) */
+@media only screen and (min-width: 1200px) {
+  main .carrusel .mostrador {
+    width: calc(33.33% * 5);
+  }
+
+  main .carrusel .mostrador .elemento {
+    width: calc(100% / 3);
+  }
+
+  aside .mostrador {
+    height: 95vh;
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-around;
+    transition: all 0.5s ease;
+  }
+
+  aside .mostrador .banner {
+    width: 10vw;
+    height: 10vw;
+    background-position: center;
+    background-size: cover;
+  }
+}

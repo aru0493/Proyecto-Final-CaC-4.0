@@ -1,0 +1,536 @@
+/* Para esconder la barra de desplazamiento en Webkit browsers (Chrome, Safari) */
+/* ::-webkit-scrollbar {
+    display: none;
+  } */
+
+/* Para esconder la barra de desplazamiento en Firefox */
+/* html {
+  scrollbar-width: none;
+} */
+
+/* Para esconder la barra de desplazamiento en Edge e IE */
+/* html {
+  -ms-overflow-style: none;
+} */
+
+/* Para esconder la barra de desplazamiento en Opera */
+/* html {
+  overflow: -o-scrolling;
+} */
+
+/* Para esconder la barra de desplazamiento en todos los navegadores */
+/* html {
+  overflow: hidden;
+} */
+
+/* CUSTOM PROPERTIES */
+:root {
+  /* colores */
+  --color-primario: #3e7cb1;
+  --color-secundario: #dbe4ee;
+  --color-terciario: #81a4cd;
+  --color-selector: #ff920a;
+  --color-header: #054a91;
+  /* tipografias */
+  --tipo-principal: "Nova Mono", monospace;
+  --tipo-secundario: "Kode Mono", monospace;
+  font-weight: 500;
+}
+
+/* Modo oscuro */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* colores */
+    --color-primario: #dbe4ee;
+    --color-secundario: #3e7cb1;
+    --color-terciario: #054a91;
+    --color-selector: #f17300;
+    --color-header: #043261;
+  }
+}
+
+/* Modo alto contraste */
+@media (prefers-color-scheme: high) {
+  :root {
+    /* colores */
+    --color-primario: #ffffff;
+    --color-secundario: #054a91;
+    --color-terciario: #043261;
+    --color-header: #032548;
+  }
+}
+
+/* Modo sin animaciones */
+/* es preferible utilizar selector concreto de el/los elementos con animaciones para optimizar el rendimiento */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* Margin, padding y border */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  vertical-align: baseline;
+}
+
+/* Imagenes */
+img,
+picture,
+iframe,
+figure {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+  /* en caso de asignar un tamaño determinado */
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* Enlaces */
+a {
+  display: block;
+}
+
+p a {
+  display: inline;
+}
+
+/* Listas */
+li {
+  list-style-type: none;
+}
+
+/* Desplazamiento mediante anclas suavizado */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Etiquetas de texto */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+strong,
+blockquote,
+i,
+b,
+u,
+em {
+  font-size: 1em;
+  font-weight: inherit;
+  font-style: inherit;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Pseudoelementos quotes */
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+/* Selector de texto */
+::selection {
+  background-color: var(--color-primario);
+  color: var(--color-secundario);
+}
+
+/* Formularios */
+form,
+input,
+textarea,
+select,
+button,
+label {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  hyphens: auto;
+  background-color: transparent;
+  display: block;
+  /* en caso de personalizar inputs */
+  /* appearance: none; */
+}
+
+/* Tablas */
+table,
+tr,
+td {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* SVG */
+svg {
+  width: 100%;
+  display: block;
+  fill: currentColor;
+}
+
+body {
+  min-height: 100vh;
+  font-size: 100%;
+  font-family: var(--tipo-principal);
+  color: var(--color-primario);
+  background-color: var(--color-secundario);
+  /* interlineado recomendado */
+  line-height: 1.4em;
+  display: grid;
+  grid-gap: 0;
+  overflow-x: hidden;
+}
+
+header {
+  grid-area: header;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: fixed;
+  z-index: 2;
+  color: var(--color-secundario);
+  background-color: var(--color-header);
+}
+
+header nav {
+  display: flex;
+  flex-flow: row nowrap;
+  padding: calc( (5vh - 1.4em) / 2) 1em;
+}
+
+header nav a {
+  padding: 0 1em;
+}
+
+header nav a:hover {
+  color: var(--color-selector);
+  cursor: pointer;
+}
+
+header .titulo {
+  padding: calc( (5vh - 0.9em) / 2) 1em;
+  font-size: 1.5em;
+}
+
+header .titulo a:hover {
+  color: var(--color-selector);
+  cursor: pointer;
+}
+
+header .menu {
+  display: none;
+}
+
+header .desplegable {
+  display: flex;
+  position: relative;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .desplegable .sesion, header .desplegable .total {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center;
+  height: 0vh;
+  width: 100%;
+  background-color:transparent;
+  color: transparent;
+  transition: all 0.5s ease;
+}
+
+header .desplegable .iconos {
+  display: flex;
+  height: 5vh;
+  width: clamp(100px, 15vw, 20vh);
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+header .desplegable .iconos .carrito, header .desplegable .iconos .usuario {
+  height: 5vh;
+  width: 5vh;
+  padding: 0.5vh;
+  margin: 0vh 1vh;
+}
+
+header .desplegable .iconos .carrito .on, header .desplegable .iconos .carrito:hover .off, header .desplegable .iconos .usuario .on, header .desplegable .iconos .usuario:hover .off {
+  display: none;
+}
+
+header .desplegable .iconos .carrito .off, header .desplegable .iconos .usuario .off {
+  display: block;
+}
+
+header .desplegable .iconos .carrito:hover, header .desplegable .iconos .usuario:hover{
+  cursor: pointer;
+}
+
+header .desplegable .iconos .carrito:hover .on, header .desplegable .iconos .usuario:hover .on {
+  display: block;
+  fill: var(--color-selector);
+}
+
+header .desplegable.carrito-activo .iconos .carrito .on, header .desplegable.usuario-activo .iconos .usuario .on {
+  display: block;
+  fill: var(--color-selector);
+}
+
+header .desplegable.carrito-activo .iconos .carrito .off, header .desplegable.usuario-activo .iconos .usuario .off {
+  display: none;
+}
+
+header .desplegable.usuario-activo .sesion, header .desplegable.carrito-activo .total {
+  background-color: var(--color-terciario);
+  color: var(--color-secundario);
+  border-radius: 0 0 0.5vh 0.5vh;
+  padding: 0.75vh 0;
+  height: 10vh;
+}
+
+header .desplegable.usuario-activo .sesion .boton:hover, header .desplegable.carrito-activo .total .boton:hover {
+  color: var(--color-selector);
+  cursor: pointer;
+}
+
+main {
+  grid-area: main;
+  display: flex;
+  flex-flow: column nowrap;
+  overflow: hidden;
+  font-family: var(--tipo-secundario);
+}
+
+aside {
+  grid-area: aside;
+  display: none;
+  background-color: var(--color-terciario);
+}
+
+footer {
+  grid-area: footer;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-secundario);
+  background-color: var(--color-header);
+  z-index: 2;
+}
+
+footer .links {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+footer .links a:hover {
+  color: var(--color-selector);
+  cursor: pointer;
+}
+
+footer .redes {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+footer .redes .facebook, footer .redes .instagram , footer .redes .x, footer .redes .whatsapp{
+  padding: 0.5em;
+  fill: var(--color-secundario);
+}
+
+footer .redes .facebook:hover, footer .redes .instagram:hover , footer .redes .x:hover, footer .redes .whatsapp:hover{
+  fill: var(--color-selector);
+  cursor: pointer;
+}
+
+footer .copyright {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+}
+
+footer .copyright p {
+  padding: 0 0.125em;
+}
+
+/*  Resolucion menor a 600px (celulares) */
+@media only screen and (max-width: 600px) {
+  body {
+    grid-template-rows: 5vh auto 20vh;
+    grid-template-columns: 100vw;
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+  }
+
+  footer {
+    padding: 2.5px;
+  }
+
+  footer .links {
+    order: 1;
+    flex-flow: row wrap;
+    padding: 0 0.5em;
+    width: 100vw;
+  }
+
+  footer .links a {
+    padding: 0 1.5em;
+  }
+
+  footer .redes {
+    order: 0;
+    width: 100vw;
+    justify-content: center;
+  }
+
+  footer .redes .facebook, footer .redes .instagram , footer .redes .x, footer .redes .whatsapp{
+    width: 3em;
+    height: 3em;
+  }
+
+  footer .copyright {
+    order: 2;
+    width: 100vw;
+    flex-flow: row wrap;
+  }
+}
+/*  menu desplegable para resoluciones menores a 800px */
+@media only screen and (max-width: 800px){
+  header {
+    height: 5vh;
+    flex-flow: row wrap;
+  }
+
+  header .menu {
+    display: block;
+    width: 4vh;
+    height: 4vh;
+    margin: 0.5vh 1vh;
+  }
+
+  header .menu.activo {
+    cursor: pointer;
+    fill: var(--color-selector);
+  }
+
+  header .opciones {
+    width: 100vw;
+    height: 0vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: transparent;
+    color: transparent;
+    order: 3;
+    transition: all 0.5s ease;
+    overflow: hidden;
+  }
+
+  header .opciones.activo {
+    height: 15vh;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-secundario);
+    background-color: var(--color-terciario);
+  }
+  
+}
+
+/*  Resolucion mayor a 600px y menor a 1200px (tablets y laptops de baja resolucion) */
+@media only screen and (min-width: 600px) and (max-width: 1200px) {
+  body {
+    grid-template-rows: 5vh auto 15vh;
+    grid-template-columns: 100vw;
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+  }
+
+  header {
+    height: 5vh;
+  }
+
+  footer {
+    padding: 15px;
+  }
+
+  footer .links a {
+    padding: 0 0.5em;
+  }
+
+  footer .redes .facebook, footer .redes .instagram , footer .redes .x, footer .redes .whatsapp{
+    width: 2.5em;
+    height: 2.5em;
+  }
+}
+
+/*  Resolucion mayor a 1200px (PC de escritorio) */
+@media only screen and (min-width: 1200px) {
+  body {
+    grid-template-columns: 15vw 85vw;
+    grid-template-rows: 5vh auto 15vh;
+    grid-template-areas:
+      "header header"
+      "aside main"
+      "footer footer";
+  }
+
+  header {
+    height: 5vh;
+  }
+
+  aside {
+    width: 15vw;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow: hidden;
+    position: sticky;
+    top: 5vh;
+  }
+
+  aside .mostrador {
+    margin-top: 10vh;
+  }
+
+  footer {
+    padding: 20px;
+  }
+
+  footer .redes .facebook, footer .redes .instagram , footer .redes .x, footer .redes .whatsapp{
+    width: 3em;
+    height: 3em;
+  }
+
+  footer .links a {
+    padding: 0 1em;
+  }
+
+}
